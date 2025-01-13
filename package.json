@@ -1,0 +1,106 @@
+{
+  "name": "cextension",
+  "displayName": "CExtension",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "extension.hotkey",
+        "key": "ctrl+space",
+        "when": "editorTextFocus && !suggestWidgetVisible"
+      },
+      {
+        "command": "extension.completeCode",
+        "key": "ctrl+shift+i",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.promptkey",
+        "key": "ctrl+c",
+        "when": "editorTextFocus && !suggestWidgetVisible"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.hotkey",
+        "title": "hotkey"
+      },
+      {
+        "command": "extension.subhotkey",
+        "title": "subhotkey"
+      },
+      {
+        "command": "extension.Triggertest",
+        "title": "Triggertest"
+      },
+      {
+        "command": "extension.completeCode",
+        "title": "Complete Code"
+      }
+    ],
+    "languages": [
+      {
+        "id": "c",
+        "aliases": [
+          "C",
+          "c"
+        ],
+        "extensions": [
+          ".c",
+          ".h"
+        ],
+        "configuration": "./c-language-configuration.json"
+      },
+      {
+        "id": "smallbasic",
+        "extensions": [
+          ".sb"
+        ],
+        "configuration": "./sb-language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "c",
+        "scopeName": "source.c",
+        "path": "./syntaxes/c.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
+    "@types/ws": "^8.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "net": "^1.0.2",
+    "openai": "^4.73.0",
+    "ws": "^8.17.0"
+  }
+}

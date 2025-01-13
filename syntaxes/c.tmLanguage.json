@@ -1,0 +1,150 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "C",
+    "scopeName": "source.c",
+    "patterns": [
+      {
+        "include": "#comments"
+      },
+      {
+        "include": "#keywords"
+      },
+      {
+        "include": "#functions"
+      },
+      {
+        "include": "#strings"
+      },
+      {
+        "include": "#numbers"
+      },
+      {
+        "include": "#preprocessor"
+      }
+    ],
+    "repository": {
+      "comments": {
+        "patterns": [
+          {
+            "name": "comment.line.double-slash.c",
+            "begin": "//",
+            "beginCaptures": {
+              "0": {
+                "name": "punctuation.definition.comment.c"
+              }
+            },
+            "end": "$"
+          },
+          {
+            "name": "comment.block.c",
+            "begin": "/\\*",
+            "beginCaptures": {
+              "0": {
+                "name": "punctuation.definition.comment.c"
+              }
+            },
+            "end": "\\*/",
+            "endCaptures": {
+              "0": {
+                "name": "punctuation.definition.comment.c"
+              }
+            }
+          }
+        ]
+      },
+      "keywords": {
+        "patterns": [
+          {
+            "name": "keyword.control.c",
+            "match": "\\b(if|else|for|while|do|switch|case|default|break|continue|return|goto|sizeof|typedef|extern|static|register|auto|volatile|const)\\b"
+          },
+          {
+            "name": "storage.type.c",
+            "match": "\\b(int|char|float|double|void|struct|union|enum|signed|unsigned|short|long)\\b"
+          }
+        ]
+      },
+      "functions": {
+        "patterns": [
+          {
+            "name": "entity.name.function.c",
+            "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+          }
+        ]
+      },
+      "strings": {
+        "patterns": [
+          {
+            "name": "string.quoted.double.c",
+            "begin": "\"",
+            "beginCaptures": {
+              "0": {
+                "name": "punctuation.definition.string.begin.c"
+              }
+            },
+            "end": "\"",
+            "endCaptures": {
+              "0": {
+                "name": "punctuation.definition.string.end.c"
+              }
+            },
+            "patterns": [
+              {
+                "name": "constant.character.escape.c",
+                "match": "\\\\."
+              }
+            ]
+          },
+          {
+            "name": "string.quoted.single.c",
+            "begin": "'",
+            "beginCaptures": {
+              "0": {
+                "name": "punctuation.definition.string.begin.c"
+              }
+            },
+            "end": "'",
+            "endCaptures": {
+              "0": {
+                "name": "punctuation.definition.string.end.c"
+              }
+            },
+            "patterns": [
+              {
+                "name": "constant.character.escape.c",
+                "match": "\\\\."
+              }
+            ]
+          }
+        ]
+      },
+      "numbers": {
+        "patterns": [
+          {
+            "name": "constant.numeric.c",
+            "match": "\\b(0[xX][0-9a-fA-F]+|[0-9]+(\\.[0-9]*)?([eE][-+]?[0-9]+)?)\\b"
+          }
+        ]
+      },
+      "preprocessor": {
+        "patterns": [
+          {
+            "name": "meta.preprocessor.c",
+            "begin": "^#\\s*\\b(include|define|undef|if|ifdef|ifndef|else|elif|endif|line|error|pragma)\\b",
+            "beginCaptures": {
+              "0": {
+                "name": "punctuation.definition.preprocessor.c"
+              }
+            },
+            "end": "$",
+            "patterns": [
+              {
+                "include": "#strings"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+  

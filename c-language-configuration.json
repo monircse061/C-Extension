@@ -1,0 +1,73 @@
+// Ref: https://code.visualstudio.com/api/language-extensions/language-configuration-guide
+{
+    // Comment settings
+    "comments": {
+      "lineComment": "//", // Single line comment symbol
+      "blockComment": ["/*", "*/"] // Block comment symbols
+    },
+  
+    // Bracket settings
+    "brackets": [
+      ["{", "}"],
+      ["[", "]"],
+      ["(", ")"]
+    ],
+  
+    // Auto Closing settings
+    "autoClosingPairs": [
+      { "open": "{", "close": "}" },
+      { "open": "[", "close": "]" },
+      { "open": "(", "close": ")" },
+      { "open": "\"", "close": "\"", "notIn": ["string"] },
+      { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+      { "open": "`", "close": "`", "notIn": ["string", "comment"] }
+    ],
+  
+    // Auto close before settings
+    "autoCloseBefore": ";:.,=}])>` \n\t",
+  
+    // Surrounding settings
+    "surroundingPairs": [
+      ["{", "}"],
+      ["[", "]"],
+      ["(", ")"],
+      ["\"", "\""],
+      ["'", "'"],
+      ["`", "`"]
+    ],
+  
+    // Folding settings
+    "folding": {
+      "markers": {
+        "start": "^\\s*//\\s*#region\\b", // Folding start marker in comments
+        "end": "^\\s*//\\s*#endregion\\b" // Folding end marker in comments
+      }
+    },
+  
+    // Word pattern settings
+    "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+  
+    // Indentation rules settings
+    "indentationRules": {
+      "increaseIndentPattern": "^.*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$",
+      "decreaseIndentPattern": "^.*(\\bcase\\b.*:|\\bdefault\\b.*:)\\s*$|^.*[\\)\\}\\]].*$"
+    },
+  
+    // On Enter rules settings
+    "onEnterRules": [
+      {
+        "beforeText": "^\\s*(?:for|if|while|switch|else|do|struct|enum|union|typedef)\\b.*?$",
+        "afterText": "^(?=.*\\{).*$",
+        "action": { "indent": "indent"}
+      },
+      {
+        "beforeText": "^\\s*(?:case|default)\\b.*?:.*?$",
+        "action": { "indent": "indent"}
+      },
+      {
+        "beforeText": "^\\s*#\\b(if|else|elif|endif|define|undef)\\b.*?$",
+        "action": { "indent": "indent"}
+      }
+    ]
+  }
+  
